@@ -14,7 +14,7 @@
 import numpy as np
 import pdb
 
-# Test cases
+## BEGIN Test cases
 test_field_1 = np.asarray(
             [[5, 7, 8, 6, 3],
             [0, 0, 7, 0, 4],
@@ -49,14 +49,20 @@ test_answ_5 = sum(sum(test_field_3))
 test_start_loc_6 = (2, 3)
 test_answ_6 = 14
 
+test_field_4 = np.asarray([[1, 0, 2], [0, 1, 0]])
+test_start_loc_7 = (0, 1)
+test_answ_7 = 2
+
 tests = [
     (test_field_1, test_start_loc_1, test_answ_1),
     (test_field_1, test_start_loc_2, test_answ_2),
     (test_field_1, test_start_loc_3, test_answ_3),
     (test_field_2, test_start_loc_4, test_answ_4),
     (test_field_3, test_start_loc_5, test_answ_5),
-    (test_field_3, test_start_loc_6, test_answ_6)
+    (test_field_3, test_start_loc_6, test_answ_6),
+    (test_field_4, test_start_loc_7, test_answ_7)
     ]
+## END Test cases
 
 # Constants
 STOP = 0
