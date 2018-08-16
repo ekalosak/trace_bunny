@@ -38,11 +38,24 @@ test_field_2 = np.asarray(
 test_start_loc_4 = (0, 0)
 test_answ_4 = 1 + 3 + 4 + 5
 
+test_field_3 = np.asarray(
+        [[1, 2, 3, 10, 5, 8],
+        [3, 0, 0, 0, 0, 3],
+        [1, 2, 3, 10, 4, 0]]
+        )
+test_start_loc_5 = (2, 5)
+test_answ_5 = sum(sum(test_field_3))
+
+test_start_loc_6 = (2, 3)
+test_answ_6 = sum(sum(test_field_3)) - 4
+
 tests = [
     (test_field_1, test_start_loc_1, test_answ_1),
     (test_field_1, test_start_loc_2, test_answ_2),
     (test_field_1, test_start_loc_3, test_answ_3),
-    (test_field_2, test_start_loc_4, test_answ_4)
+    (test_field_2, test_start_loc_4, test_answ_4),
+    (test_field_3, test_start_loc_5, test_answ_5),
+    (test_field_3, test_start_loc_6, test_answ_6)
     ]
 
 # Constants
