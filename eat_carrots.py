@@ -58,6 +58,9 @@ def bunny(field, start_loc):
     fd = field.copy() # retain the original input for debugging
     loc = start_loc
 
+    print("working on field:")
+    print(fd)
+
     c = fd[loc] # eat the first carrot
     fd[loc] = 0
 
@@ -67,15 +70,15 @@ def bunny(field, start_loc):
         print(fd)
 
         nd = next_dir(fd, loc) # find the adjacency with most carrots
-        print("next direction is")
+        print("next direction is: " + str(nd))
 
         if nd == STOP: # if there are no nearby carrots, quit
             print("no carrots nearby to loc: " + str(loc))
             break
 
         # update location with the next direction
-        loc[0] = loc[0] + nd[0]
-        loc[1] = loc[1] + nd[1]
+        loc = loc[0] + nd[0], loc[1] + nd[1]
+        pdb.set_trace()
 
         # eat that carrot!
         c = c + fd[loc]
@@ -127,7 +130,15 @@ def nearby_locs(f, l):
     return(nds)
 
 def next_dir(f, l):
-    return(STOP)
+    max_carrot = 0
+    result_dir = STOP
+
+    for nd in nearby_locs(f, l):
+        if f[nd] > max_carrot:
+            result_dir = nd
+            max_carrot = f[nd]
+
+    return(result_dir)
 
 if __name__ == "__main__":
     print("running test 1 with field:")
