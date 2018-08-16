@@ -2,10 +2,10 @@
 Greedy algorithm for bunny eating carrots
 
 ## What's inside
-This script encodes functions and tests for a greedy graph algorithm framed as
-a bunny in a field eating carrots. The bunny eats carrots at the current
-location, looks around, determines which adjacent cell has most carrots, hops
-there, eats those carrots, repeats until no carrots adjacent.
+This script (`eat_carrots.py`) encodes functions and tests for a greedy graph
+algorithm framed as a bunny in a field eating carrots. The bunny eats carrots at
+the current location, looks around, determines which adjacent cell has most
+carrots, hops there, eats those carrots, repeats until no carrots adjacent.
 
 Example usage:
 ```bash
