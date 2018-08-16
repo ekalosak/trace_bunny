@@ -3,10 +3,16 @@
 #
 # This script encodes functions and tests for a greedy graph algorithm framed as
 # a bunny in a field eating carrots. The bunny eats carrots at the current
-# location, looks around, determines which adjacent 
+# location, looks around, determines which adjacent cell has most carrots, hops
+# there, eats those carrots, repeats until no carrots adjacent.
+#
+# Example usage:
+#   BASH:   python eat_carrots.py
+#   PYTHON: >>> bunny(test_field_1, test_start_loc_1)
 
 ### BEGIN CODE
 import numpy as np
+import pdb
 
 # Test cases
 test_field_1 = np.asarray(
@@ -48,11 +54,23 @@ def bunny(field, start_loc):
     fd = field.copy() # retain the original input for debugging
     loc = start_loc
 
+    c = fd[loc] # eat the first carrot
+    fd[loc] = 0
+
     while(nearby_carrots(fd, loc)): # until there are no carrots near the bunny
+
+        print("working on field:")
+        print(fd)
+
         nd = next_dir(fd, loc) # find the adjacency with most carrots
+        print("next direction is")
+
         if nd == STOP: # if there are no nearby carrots, quit
+            print("no carrots nearby to loc: " + str(loc))
             break
-        loc[0] = loc[0] + nd[0] # update location with the next direction
+
+        # update location with the next direction
+        loc[0] = loc[0] + nd[0]
         loc[1] = loc[1] + nd[1]
 
         # eat that carrot!
@@ -63,6 +81,7 @@ def bunny(field, start_loc):
 
 def nearby_carrots(f, l):
     # TODO
+    pdb.set_trace()
     return(False)
 
 def next_dir(f, l):
