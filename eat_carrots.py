@@ -47,7 +47,7 @@ test_start_loc_5 = (2, 5)
 test_answ_5 = sum(sum(test_field_3))
 
 test_start_loc_6 = (2, 3)
-test_answ_6 = sum(sum(test_field_3)) - 4
+test_answ_6 = 14
 
 tests = [
     (test_field_1, test_start_loc_1, test_answ_1),
