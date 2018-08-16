@@ -43,6 +43,10 @@ def bunny(field, start_loc):
     Returns:
         num_carrots (int) : number of carrots the bunny has eaten by the end.
 
+    Side effects:
+        1. prints intermediate output to IO
+        2. could throw unexpected exception
+
     Notes:
     Todo:
         1. check inputs for type soundness - right now this relies on user to
@@ -80,9 +84,47 @@ def bunny(field, start_loc):
     return(c)
 
 def nearby_carrots(f, l):
-    # TODO
-    pdb.set_trace()
+    for nl in nearby_locs(f, l):
+        if f[nl] != 0: return(True)
     return(False)
+
+def nearby_locs(f, l):
+    n, m = f.shape
+    nds = None
+
+    # first, corners
+    if l == (0, 0):
+        nds = [(0, 1), (1, 0)]
+    elif l == (n-1, 0):
+        nds = [(n-1, 1), (n-2, 0)]
+    elif l == (0, m-1):
+        nds = [(0, m-2), (1, m-1)]
+    elif l == (n-1, m-1):
+        nds = [(n-2, m-1), (n-1, m-2)]
+
+    # next, edges
+    elif l[0] == 0: # top
+        nds = [(0, l[1]-1), (0, l[1]+1), (1, l[1])]
+    elif l[0] == n-1: # bottom
+        nds = [(0, l[1]-1), (0, l[1]+1), (n-2, l[1])]
+    elif l[1] == 0: # left
+        nds = [(l[0], 1), (l[0]-1, 0), (l[0]+1, 0)]
+    elif l[1] == m-1: # right
+        nds = [(l[0], m-2), (l[0]-1, m-1), (l[0]+1, m-1)]
+
+    # finally, an internal point
+    else:
+        nds = [
+                (l[0], l[1]-1),
+                (l[0], l[1]+1),
+                (l[0]+1, l[1]),
+                (l[0]-1, l[1])
+            ]
+
+
+    if nds == None: raise Exception("You missed a case in nearby_carrots")
+
+    return(nds)
 
 def next_dir(f, l):
     return(STOP)
