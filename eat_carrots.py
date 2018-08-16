@@ -77,8 +77,7 @@ def bunny(field, start_loc):
             break
 
         # update location with the next direction
-        loc = loc[0] + nd[0], loc[1] + nd[1]
-        pdb.set_trace()
+        loc = nd
 
         # eat that carrot!
         c = c + fd[loc]
