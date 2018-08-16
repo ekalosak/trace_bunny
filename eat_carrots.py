@@ -30,10 +30,19 @@ test_answ_2 = 5 + 8 + 9 + 4 + 3 + 7 + 8 + 7 + 5
 test_start_loc_3 = (0, 4)
 test_answ_3 = 3 + 6 + 8 + 7 + 5
 
+test_field_2 = np.asarray(
+        [[1, 2],
+        [3, 4],
+        [0, 5]]
+        )
+test_start_loc_4 = (0, 0)
+test_answ_4 = 1 + 3 + 4 + 5
+
 tests = [
     (test_field_1, test_start_loc_1, test_answ_1),
-    (test_field_1, test_start_loc_2, test_answ_2)
-    (test_field_1, test_start_loc_3, test_answ_3)
+    (test_field_1, test_start_loc_2, test_answ_2),
+    (test_field_1, test_start_loc_3, test_answ_3),
+    (test_field_2, test_start_loc_4, test_answ_4)
     ]
 
 # Constants
