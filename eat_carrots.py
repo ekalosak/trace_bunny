@@ -24,6 +24,18 @@ test_field_1 = np.asarray(
 test_start_loc_1 = (1, 2)
 test_answ_1 = 27
 
+test_start_loc_2 = (1, 2)
+test_answ_2 = 27
+
+test_start_loc_3 = (1, 2)
+test_answ_3 = 27
+
+tests = [
+    (test_field_1, test_start_loc_1, test_answ_1),
+    (test_field_1, test_start_loc_2, test_answ_2),
+    (test_field_1, test_start_loc_3, test_answ_3)
+    ]
+
 # Constants
 # U, D, L, R, STOP = 0, 1, 2, 3, 4
 STOP = 0
@@ -140,13 +152,24 @@ def next_dir(f, l):
     return(result_dir)
 
 if __name__ == "__main__":
-    print("running test 1 with field:")
-    print(test_field_1)
-    result = bunny(test_field_1, test_start_loc_1)
-    print("got: " + str(result))
-    if result == test_answ_1:
-        print("passed test 1!")
-    else:
-        print("failed test 1")
+    t = 1
+    nt = len(tests)
+    p, f = 0, 0 # n pass, n fail
+
+    for test in tests:
+        f, l, a = test
+        print("running test {} with field:".format(t))
+        print(f)
+        result = bunny(f, l)
+        print("got: " + str(result))
+        if result == a:
+            print("passed")
+            p = p + 1
+        else:
+            print("failed")
+            f = f + 1
+
+    if p == nt: print("passed all {} tests!".format(nt))
+    else: print("passed {}, failed {}, out of {} tests.".format(p, f, nt))
 
 ### END CODE
