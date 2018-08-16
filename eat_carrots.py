@@ -70,8 +70,12 @@ def next_dir(f, l):
 
 if __name__ == "__main__":
     print("running test 1 with field:")
-    print(test_1)
-
-    bunny(test_field_1)
+    print(test_field_1)
+    result = bunny(test_field_1, test_start_loc_1)
+    print("got: " + str(result))
+    if result == test_answ_1:
+        print("passed test 1!")
+    else:
+        print("failed test 1")
 
 ### END CODE
