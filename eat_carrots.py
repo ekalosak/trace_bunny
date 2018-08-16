@@ -24,20 +24,19 @@ test_field_1 = np.asarray(
 test_start_loc_1 = (1, 2)
 test_answ_1 = 27
 
-test_start_loc_2 = (3, 2) # 5, 8, 9, 4, 3, 6, .. 4 3 1 or 8 7 or 8 7 5
-test_answ_2 = 43 # 43 or 50 or 55
+test_start_loc_2 = (3, 2)
+test_answ_2 = 5 + 8 + 9 + 4 + 3 + 7 + 8 + 7 + 5
 
-test_start_loc_3 = (1, 2)
-test_answ_3 = 27
+test_start_loc_3 = (0, 4)
+test_answ_3 = 3 + 6 + 8 + 7 + 5
 
 tests = [
     (test_field_1, test_start_loc_1, test_answ_1),
     (test_field_1, test_start_loc_2, test_answ_2)
-    # (test_field_1, test_start_loc_3, test_answ_3)
+    (test_field_1, test_start_loc_3, test_answ_3)
     ]
 
 # Constants
-# U, D, L, R, STOP = 0, 1, 2, 3, 4
 STOP = 0
 
 # Workhorse function
@@ -121,7 +120,7 @@ def nearby_locs(f, l):
     elif l[0] == 0: # top
         nds = [(0, l[1]-1), (0, l[1]+1), (1, l[1])]
     elif l[0] == n-1: # bottom
-        nds = [(0, l[1]-1), (0, l[1]+1), (n-2, l[1])]
+        nds = [(n-1, l[1]-1), (n-1, l[1]+1), (n-2, l[1])]
     elif l[1] == 0: # left
         nds = [(l[0], 1), (l[0]-1, 0), (l[0]+1, 0)]
     elif l[1] == m-1: # right
@@ -161,6 +160,7 @@ if __name__ == "__main__":
         f, l, a = test
         print("running test {} with field:".format(t))
         print(f)
+        print("starting at location: {}".format(l))
         result = bunny(f, l)
         print("got: " + str(result))
         if result == a:
