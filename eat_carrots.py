@@ -24,16 +24,16 @@ test_field_1 = np.asarray(
 test_start_loc_1 = (1, 2)
 test_answ_1 = 27
 
-test_start_loc_2 = (1, 2)
-test_answ_2 = 27
+test_start_loc_2 = (3, 2) # 5, 8, 9, 4, 3, 6, .. 4 3 1 or 8 7 or 8 7 5
+test_answ_2 = 43 # 43 or 50 or 55
 
 test_start_loc_3 = (1, 2)
 test_answ_3 = 27
 
 tests = [
     (test_field_1, test_start_loc_1, test_answ_1),
-    (test_field_1, test_start_loc_2, test_answ_2),
-    (test_field_1, test_start_loc_3, test_answ_3)
+    (test_field_1, test_start_loc_2, test_answ_2)
+    # (test_field_1, test_start_loc_3, test_answ_3)
     ]
 
 # Constants
@@ -94,6 +94,7 @@ def bunny(field, start_loc):
         # eat that carrot!
         c = c + fd[loc]
         fd[loc] = 0
+        print("i've eaten {} carrots!".format(c))
 
     return(c)
 
@@ -154,7 +155,7 @@ def next_dir(f, l):
 if __name__ == "__main__":
     t = 1
     nt = len(tests)
-    p, f = 0, 0 # n pass, n fail
+    p, fl = 0, 0 # n pass, n fail
 
     for test in tests:
         f, l, a = test
@@ -167,9 +168,11 @@ if __name__ == "__main__":
             p = p + 1
         else:
             print("failed")
-            f = f + 1
+            fl = fl + 1
+
+        t = t + 1
 
     if p == nt: print("passed all {} tests!".format(nt))
-    else: print("passed {}, failed {}, out of {} tests.".format(p, f, nt))
+    else: print("passed {}, failed {}, out of {} tests.".format(p, fl, nt))
 
 ### END CODE
